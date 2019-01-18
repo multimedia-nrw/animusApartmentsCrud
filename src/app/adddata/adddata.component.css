@@ -1,0 +1,33 @@
+.example-form {
+	min-width: 150px;
+	max-width: 500px;
+	width: 100%;
+}
+.inner_card{
+	text-align: center;
+	/*margin-left: 4.5em;
+	margin-bottom: 3em!important;
+	margin-top: 3em;*/
+	color: #3f51b5
+}
+.example-full-width {
+	width: 100%;
+}
+.main_card{
+	margin-top: 2em; */
+	/* margin: 5em; */
+	text-align: center;
+	/* margin-left: 33em; */
+	height: 30em;
+	text-align: center;
+	border-top: 2px solid #ff4081;
+	border-bottom: 2px solid #ff4081;
+	background-color: white;
+	/* max-width: 80em; */
+}
+.submit_button{
+	margin-right: 12px;
+}
+.date_align{
+	float: left;
+}

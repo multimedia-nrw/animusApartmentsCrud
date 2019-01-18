@@ -1,0 +1,27 @@
+<mat-card class="main_card">
+     <mat-card-title class="inner_card">Apartments Record</mat-card-title>
+<mat-list>
+ <mat-list-item class="list_border">  
+ 	<table class="example-full-width" cellspacing="0">
+ 	<tr>
+    <td><mat-list-item> Move-In Date </mat-list-item></td>
+    <td><mat-list-item> Email </mat-list-item></td>
+    <td><mat-list-item> Address </mat-list-item></td>
+    <td><mat-list-item> Action </mat-list-item></td>
+  </tr>
+   <mat-list-item>{{apartment_list.length}}</mat-list-item>
+
+ <tr *ngFor="let apartment_detail of apartment_list">
+    <td><mat-list-item> {{apartment_detail.move_in_date}}</mat-list-item></td>
+    <td><mat-list-item> {{apartment_detail.street}}{{apartment_detail.town}}{{apartment_detail.postal_code}}{{apartment_detail.country}}</mat-list-item></td>
+    <td><mat-list-item> {{apartment_detail.contact_email_address}}</mat-list-item></td>
+    <td>
+    <mat-list-item>  
+    	<button mat-raised-button color="primary" (click)="ViewUserList()">View</button>
+	    <button mat-raised-button color="accent" (click)="AddUserList()">Add</button>
+	</mat-list-item></td>
+</tr>
+</table> 
+</mat-list-item>
+ </mat-list>
+</mat-card>
