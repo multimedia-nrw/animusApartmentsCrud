@@ -78,7 +78,7 @@ export class EditApartmentComponent implements OnInit {
             var edit_apartment_status = JSON.parse(data['_body']);
             console.log('edit_apartment_status status', edit_apartment_status)
             if (edit_apartment_status.status == 200) {
-                this.router.navigate(['/List_component']);
+                this.router.navigate(['/apartment/list']);
             }
         });
     }

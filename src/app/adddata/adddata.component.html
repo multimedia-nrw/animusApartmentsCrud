@@ -1,103 +1,63 @@
 <mat-card class="example-card main_card">
-<mat-card-title class="inner_card">Animus</mat-card-title>
-<form class="form-horizontal" [formGroup]="form">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-     <td>
-      <mat-form-field class="date_align">
-        <input matInput [matDatepicker]="picker" formControlName = "move_in_date" placeholder="Move in Date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-      </mat-form-field>
-    </td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Property Detail" formControlName = "property_id">
-    </mat-form-field></td>
-  </tr>
+    <mat-card-title class="inner_card">Animus</mat-card-title>
+    <form class="form-horizontal" [formGroup]="form">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="date_align">
+                        <input matInput [matDatepicker]="picker" formControlName="move_in_date"
+                               placeholder="Move in Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Property Detail" formControlName="property_id">
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Street" formControlName = "street">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Town" formControlName = "town">
-    </mat-form-field></td>
-  </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Street" formControlName="street">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Town" formControlName="town">
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput #postalCode maxlength="5" formControlName = "postal_code" placeholder="Postal Code" value="94043">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
-    <td>
-     <mat-form-field>
-      <mat-select placeholder="Country" [(ngModel)]="selectedCountry" formControlName = "country">
-        <mat-option *ngFor="let countries of user_country" [value]="countries.country_id">
-          {{countries.country_name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field></td>
-  </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput #postalCode maxlength="5" formControlName="postal_code"
+                               placeholder="Postal Code" value="94043">
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select placeholder="Country" [(ngModel)]="selectedCountry" formControlName="country">
+                            <mat-option *ngFor="let countries of user_country" [value]="countries.country_id">
+                                {{countries.country_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Contact Email" formControlName = "email">
-    </mat-form-field>
-  </tr>
-</table>
-<button type="submit" mat-raised-button color="accent" class="submit_button" (click)="onSubmit()">Submit Data</button>
-<button mat-raised-button type="reset" color="primary">Reset Data</button>
-</form></mat-card>
-
-  <!-- <div class="form-group">
-    <div class="col-sm-12">
-      <label for="email" class="control-label">Email</label>
-      <input type="text" id="email" class="form-control" formControlName="email">
-    </div> -->
-     <!-- <div *ngIf="!form.controls.email.valid  && (form.controls.email.dirty || isClickedOnce)">
-      <p class="p"> *Name ist erforderlich</p></div> -->
-<!--   </div>
-
-  <div class="form-group">
-    <div class="col-sm-12">
-      <label for="street" class="control-label">Password</label>
-      <input type="text" id="street" class="form-control" formControlName="password">
-    </div>
-  </div> -->
-
-
-  <!-- <form class="example-form" [formGroup]="formgroup" (ngSubmit)="submitCompany(companyForm.form);">
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="First name" formControlName = "email">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Long Last Name That Will Be Truncated" formControlName = "email">
-    </mat-form-field></td>
-  </tr></table>
-
-  <p>
-    <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Address" formControlName = "email">1600 Amphitheatre Pkwy</textarea>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Address 2" formControlName = "email"></textarea>
-    </mat-form-field>
-  </p>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="City" formControlName = "email">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="State" formControlName = "email">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput #postalCode maxlength="5" formControlName = "email" placeholder="Postal Code" value="94043">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
-  </tr>
-<tr><button class="btn btn-primary" [disabled]="!companyForm.valid">Submit</button></tr>
-</table>
-</form> -->
+            <tr>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Contact Email" formControlName="email">
+                </mat-form-field>
+            </tr>
+        </table>
+        <button type="submit" mat-raised-button color="accent" class="submit_button" (click)="onSubmit()">Submit Data
+        </button>
+        <button mat-raised-button type="reset" color="primary">Reset Data</button>
+    </form>
+</mat-card>
