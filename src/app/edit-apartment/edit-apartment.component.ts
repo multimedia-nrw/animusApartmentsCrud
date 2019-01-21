@@ -71,6 +71,7 @@ export class EditApartmentComponent implements OnInit {
             postal_code: this.form.value.postal_code,
             town: this.form.value.town,
             country: this.form.value.country,
+            access_token: this.apartment_detail_token
         }
 
         this.apartmentService.updateApartment(edit_apartment_data).then(data => {
@@ -82,5 +83,4 @@ export class EditApartmentComponent implements OnInit {
             }
         });
     }
-
 }
