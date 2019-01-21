@@ -13,7 +13,7 @@
                 </td>
                 <td>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Property Detail" [(ngModel)]="apartment_id"
+                        <input matInput placeholder="Property ID" [(ngModel)]="apartment_id"
                                formControlName="property_id">
                     </mat-form-field>
                 </td>
@@ -35,9 +35,9 @@
             <tr>
                 <td>
                     <mat-form-field class="example-full-width">
-                        <input matInput #postalCode maxlength="5" [(ngModel)]="apartment_zip"
+                        <input matInput #postalCode maxlength="8" [(ngModel)]="apartment_zip"
                                formControlName="postal_code" placeholder="Postal Code" value="94043">
-                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                        <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
                     </mat-form-field>
                 </td>
                 <td>
