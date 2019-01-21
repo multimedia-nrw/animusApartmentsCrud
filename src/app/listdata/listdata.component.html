@@ -1,27 +1,26 @@
 <mat-card class="main_card">
      <mat-card-title class="inner_card">Apartments Record</mat-card-title>
 <mat-list>
- <mat-list-item class="list_border">  
  	<table class="example-full-width" cellspacing="0">
- 	<tr>
-    <td><mat-list-item> Move-In Date </mat-list-item></td>
-    <td><mat-list-item> Email </mat-list-item></td>
-    <td><mat-list-item> Address </mat-list-item></td>
-    <td><mat-list-item> Action </mat-list-item></td>
+ 	<tr class="inner_row">
+    <td><b> Move-In Date</b> </td>
+    <td><b>Address </b></td>
+    <td> <b>Email</b> </td>
+    <td><b> Action</b> </td>
   </tr>
-   <mat-list-item>{{apartment_list.length}}</mat-list-item>
-
- <tr *ngFor="let apartment_detail of apartment_list">
-    <td><mat-list-item> {{apartment_detail.move_in_date}}</mat-list-item></td>
-    <td><mat-list-item> {{apartment_detail.street}}{{apartment_detail.town}}{{apartment_detail.postal_code}}{{apartment_detail.country}}</mat-list-item></td>
-    <td><mat-list-item> {{apartment_detail.contact_email_address}}</mat-list-item></td>
+<!--    <mat-list-item>{{global_var.role.length}}</mat-list-item>
+ -->
+ <tr *ngFor="let apartment_detail of global_var.role; let i=index">
+    <td> {{apartment_detail.move_in_date}}</td>
+    <td>{{apartment_detail.street}}{{apartment_detail.town}}{{apartment_detail.postal_code}}{{apartment_detail.country}}</td>
+    <td>{{apartment_detail.contact_email_address}}</td>
     <td>
-    <mat-list-item>  
-    	<button mat-raised-button color="primary" (click)="ViewUserList()">View</button>
-	    <button mat-raised-button color="accent" (click)="AddUserList()">Add</button>
-	</mat-list-item></td>
+    	<button mat-raised-button color="primary" class="edit_button" (click)="editApartment(apartment_detail.access_token)">Edit</button>
+	    <button mat-raised-button color="accent" (click)="deleteApartment(apartment_detail.access_token,i)">Delete</button>
+	</td>
 </tr>
+<tr><mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="pageSizeOptions"              (page)="pageEvent = $event">
+</mat-paginator></tr>
 </table> 
-</mat-list-item>
  </mat-list>
 </mat-card>

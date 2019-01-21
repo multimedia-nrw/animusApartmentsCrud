@@ -6,15 +6,18 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { AdddataComponent } from './adddata/adddata.component';
 import { ListdataComponent } from './listdata/listdata.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule,MatInputModule,MatProgressSpinnerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatDialogModule,MatDatepickerModule,MatListModule, MatCardModule, MatGridListModule, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule,MatInputModule,MatPaginatorModule,MatProgressSpinnerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatDialogModule,MatDatepickerModule,MatListModule, MatCardModule, MatGridListModule, MatFormFieldModule} from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ApartmentServiceService } from './apartment-service.service';
+import { GlobalVarService } from './global-var.service';
+import { EditApartmentComponent } from './edit-apartment/edit-apartment.component';
 
 const appRoutes: Routes = [
   { path: 'Add_Component', component: AdddataComponent },
   { path: 'List_component', component: ListdataComponent },
+  { path: 'Edit_component', component: EditApartmentComponent },
 ];
 
 @NgModule({
@@ -22,7 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     MainpageComponent,
     AdddataComponent,
-    ListdataComponent
+    ListdataComponent,
+    EditApartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +34,11 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpModule,
     MatNativeDateModule,
-    MatButtonModule,MatDialogModule, MatProgressSpinnerModule, MatSelectModule,MatCardModule,MatTableModule,MatGridListModule,MatListModule,MatFormFieldModule,MatInputModule,MatDatepickerModule,
+    MatButtonModule,MatDialogModule, MatProgressSpinnerModule,MatPaginatorModule, MatSelectModule,MatCardModule,MatTableModule,MatGridListModule,MatListModule,MatFormFieldModule,MatInputModule,MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ApartmentServiceService,MatDatepickerModule],
+  providers: [ApartmentServiceService,MatDatepickerModule,GlobalVarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
