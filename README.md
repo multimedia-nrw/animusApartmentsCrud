@@ -1,27 +1,45 @@
-# Dummyanimus
+# Animus Apartment CRUD Example
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This is a simple CRUD application for Apartments for managing the properties information.
+Version 1 of the API is limited to the essentials of the requirements as per the document provided: listing all the apartments, adding,editing and deleting the apartments.
 
-## Development server
+***
+# Technology Stack
+## Frontend
+- Angular 7
+- node v6.6.x
+- Added Components: Routes, rxjs, e2e (not needed though), angular-material (for designing the form and the pages as per material design standards), and angular-alerts (but they are not showing the alert when any new record is added, updated or deleted at the moment)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Backend
+- Laravel 5.5.*
+- MySQL 5.7.x
 
-## Code scaffolding
+***
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features that are implemented
+- Welcome Page, with the Buttons to View All Apartments and Add New Apartment Information
+- Clicking on the "View" Button, redirects to the page with the apartments list.
+- Clicking on the "Add" Button, redirects to the page with the form to add new apartments
+- Form fields currently set are: Move In Date, Property ID, Street, Town, Country, Postal Code, Contact Email Address
+- While creating new apartment, it will store all the information and also send an email to the address mentioned in the form for "Contact Email Address" field.
+- When any new record is created for apartment, an unique random alphanumeric token is also stored for the record, which acts as an identifier for sending the links in the email.
+- Backend has the Resourceful API Routes
 
-## Build
+#### URL Information and it's details
+- Main Page: http://172.104.61.196
+- List Page: http://172.104.61.196/apartments/list
+- Add Page: http://172.104.61.196/apartment/add
+- Edit Page: http://172.104.61.196/apartment/edit;apartment_token={token}
+- Delete Page: http://172.104.61.196/apartment/delete;apartment_token={token}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Note: All the other Urls except that of Main Page, will not be directly accessible via links. They can only be accessed via navigation from the main page.
 
-## Running unit tests
+## Limitations:
+- Alerts not shown while adding, editing or delete the apartment record.
+- Pagination is not implemented, even though the component is added in the codebase.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Things that can be improved:
+- Availing the ability to set the pagination records (Eg: Showing 5,10,25,50 Records Per page)
+- Adding the pagination records.
+- Adding the filters to search by property town, postal_code, street or move_in_date
+- Adding the options to sort the records by any of the fields in the list.
