@@ -20,7 +20,7 @@ export interface Country {
 export class AdddataComponent implements OnInit {
 	form: FormGroup;
 
-// startDate = new Date(1990, 0, 1);
+startDate = new Date(1990, 0, 1);
 selectedCountry: string;
 user_country: Country[] = [
 {country_id: '1', country_name: 'Germany'},
