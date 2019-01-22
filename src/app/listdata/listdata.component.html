@@ -19,7 +19,7 @@
 	    <button mat-raised-button color="accent" (click)="deleteApartment(apartment_detail.access_token,i)">Delete</button>
 	</td>
 </tr>
-<tr><mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="pageSizeOptions"              (page)="pageEvent = $event">
+<tr><mat-paginator [length]="10" [pageSize]="10" (page)="pageEvent = $event">
 </mat-paginator></tr>
 </table> 
  </mat-list>

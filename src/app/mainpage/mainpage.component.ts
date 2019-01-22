@@ -15,7 +15,7 @@ import { GlobalVarService } from '../global-var.service';
 })
 export class MainpageComponent implements OnInit {
 	// apartment_list=[];
-	apartment_detail=[];
+apartment_detail=[];
   constructor(private router: Router,private http: Http, public global_var: GlobalVarService) { 
     console.log('global_var',global_var.role)
      this.http.get('http://phpstack-115345-722748.cloudwaysapps.com/api/apartments').

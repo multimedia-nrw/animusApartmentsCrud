@@ -19,7 +19,9 @@ export interface Country {
 })
 export class AdddataComponent implements OnInit {
 	form: FormGroup;
-
+	// color: any = 'primary';
+	// mode: any = 'determinate';
+	// value: any = 50;
 // startDate = new Date(1990, 0, 1);
 selectedCountry: string;
 user_country: Country[] = [
@@ -66,18 +68,18 @@ ngOnInit() {
   		country: this.form.value.country,
   	}
 
- this.apartmentService.addApartment(apartment_data).then(data => {
-		 console.log('addApartment data.data',data)
-		 var submit_status = JSON.parse(data['_body']);
-		 console.log('submit status',submit_status)
-		 if(submit_status.status == 200){
-		 	this.router.navigate(['/List_component']);
-		 }
-	}); 
+  	this.apartmentService.addApartment(apartment_data).then(data => {
+  		console.log('addApartment data.data',data)
+  		var submit_status = JSON.parse(data['_body']);
+  		console.log('submit status',submit_status)
+  		if(submit_status.status == 200){
+  			this.router.navigate(['/List_component']);
+  		}
+  	}); 
 
   	// this.http.post(apiUrl, apartment_data).subscribe(function (data) {
   	// 	console.log('result',JSON.parse(data['_body']))
   	// });
 	// this.router.navigate(['/List_component']);
-  }
+}
 }
