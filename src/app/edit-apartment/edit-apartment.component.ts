@@ -1,14 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApartmentServiceService} from '../apartment-service.service';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface Country {
     country_id: string;
     country_name: string;
 }
-
+export interface DialogData {
+	operation: string;
+	msg: string;
+};
 @Component({
     selector: 'app-edit-apartment',
     templateUrl: './edit-apartment.component.html',
@@ -32,7 +36,7 @@ export class EditApartmentComponent implements OnInit {
         {country_id: '3', country_name: 'UK'}
     ];
 
-    constructor(public router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute, private apartmentService: ApartmentServiceService) {
+    constructor(public dialog: MatDialog,public router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute, private apartmentService: ApartmentServiceService) {
         this.apartment_detail_token = this.route.snapshot.paramMap.get('apartment_token');
         this.apartmentService.getUpdatedApartment(this.apartment_detail_token).then(data => {
             var result_data = JSON.parse(data['_body']);
@@ -45,6 +49,7 @@ export class EditApartmentComponent implements OnInit {
             this.apartment_email = result_data[0]['contact_email_address'];
             this.apartment_id = result_data[0]['property_id'];
             console.log('result_data', result_data)
+            console.log('this.apartment_country', this.apartment_country)
         });
 
     }
@@ -79,8 +84,31 @@ export class EditApartmentComponent implements OnInit {
             var edit_apartment_status = JSON.parse(data['_body']);
             console.log('edit_apartment_status status', edit_apartment_status)
             if (edit_apartment_status.status == 200) {
+            	const dialogRef = this.dialog.open(EditApartmentDialogBox, {
+						width: '250px',
+						data: {operation: 'Updated', msg: 'Apartment Updated Successfully'}
+					});
+					dialogRef.afterClosed().subscribe(result => {
+						console.log('The dialog was closed');
+					});
                 this.router.navigate(['/apartment/list']);
             }
         });
     }
+}
+
+@Component({
+	selector: 'edit-apartment-dialog-box',
+	templateUrl: 'edit-apartment-dialog-box.html',
+})
+export class EditApartmentDialogBox {
+
+	constructor(
+		public dialogRef: MatDialogRef<EditApartmentDialogBox>,
+		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+	onNoClick(): void {
+		this.dialogRef.close();
+	}
+
 }

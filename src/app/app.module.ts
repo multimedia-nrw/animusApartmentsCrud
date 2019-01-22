@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {MainpageComponent} from './mainpage/mainpage.component';
-import {AdddataComponent} from './adddata/adddata.component';
-import {ListdataComponent} from './listdata/listdata.component';
+import {AdddataComponent,AddApartmentDialogBox} from './adddata/adddata.component';
+import {ListdataComponent,DeleteApartmentDialogBox} from './listdata/listdata.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
@@ -26,7 +26,7 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ApartmentServiceService} from './apartment-service.service';
 import {GlobalVarService} from './global-var.service';
-import {EditApartmentComponent} from './edit-apartment/edit-apartment.component';
+import {EditApartmentComponent,EditApartmentDialogBox} from './edit-apartment/edit-apartment.component';
 
 const appRoutes: Routes = [
     {path: 'apartment/add', component: AdddataComponent},
@@ -40,8 +40,12 @@ const appRoutes: Routes = [
         MainpageComponent,
         AdddataComponent,
         ListdataComponent,
-        EditApartmentComponent
+        EditApartmentComponent,
+        DeleteApartmentDialogBox,
+        AddApartmentDialogBox,
+        EditApartmentDialogBox
     ],
+    entryComponents: [DeleteApartmentDialogBox,AddApartmentDialogBox,EditApartmentDialogBox],
     imports: [
         BrowserModule,
         RouterModule.forRoot(appRoutes),

@@ -13,12 +13,12 @@ export class MainpageComponent implements OnInit {
     apartment_detail = [];
 
     constructor(private router: Router, private http: Http, public global_var: GlobalVarService) {
-        console.log('global_var', global_var.role)
-        this.http.get('http://phpstack-115345-722748.cloudwaysapps.com/api/apartments').subscribe(function (data) {
-            this.apartment_detail = JSON.parse(data['_body']);
-            global_var.role = this.apartment_detail.data;
-            console.log('data.data', global_var.role)
-        });
+        // console.log('global_var', global_var.role)
+        // this.http.get('http://phpstack-115345-722748.cloudwaysapps.com/api/apartments').subscribe(function (data) {
+        //     this.apartment_detail = JSON.parse(data['_body']);
+        //     global_var.role = this.apartment_detail.data;
+        //     console.log('data.data', global_var.role)
+        // });
     }
 
     ngOnInit() {

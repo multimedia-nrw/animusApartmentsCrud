@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Http} from '@angular/http';
@@ -11,6 +11,11 @@ export interface Country {
     country_id: string;
     country_name: string;
 }
+
+export interface DialogData {
+	operation: string;
+	msg: string;
+};
 
 @Component({
     selector: 'app-adddata',
@@ -54,14 +59,36 @@ export class AdddataComponent implements OnInit {
             town: this.form.value.town,
             country: this.form.value.country,
         }
-
-        this.apartmentService.addApartment(apartment_data).then(data => {
+       this.apartmentService.addApartment(apartment_data).then(data => {
             console.log('addApartment data.data', data)
             var submit_status = JSON.parse(data['_body']);
             console.log('submit status', submit_status)
             if (submit_status.status == 200) {
+            	const dialogRef = this.dialog.open(AddApartmentDialogBox, {
+						width: '250px',
+						data: {operation: 'Added', msg: 'Apartment Added Successfully'}
+					});
+					dialogRef.afterClosed().subscribe(result => {
+						console.log('The dialog was closed');
+					});
                 this.router.navigate(['/apartment/list']);
             }
         });
     }
+}
+
+@Component({
+	selector: 'add-apartment-dialog-box',
+	templateUrl: 'add-apartment-dialog-box.html',
+})
+export class AddApartmentDialogBox {
+
+	constructor(
+		public dialogRef: MatDialogRef<AddApartmentDialogBox>,
+		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+	onNoClick(): void {
+		this.dialogRef.close();
+	}
+
 }

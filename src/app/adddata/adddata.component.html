@@ -1,5 +1,5 @@
 <mat-card class="example-card main_card">
-    <mat-card-title class="inner_card">Animus</mat-card-title>
+    <mat-card-title class="inner_card">Add Apartment</mat-card-title>
     <form class="form-horizontal" [formGroup]="form">
         <table class="example-full-width" cellspacing="0">
             <tr>
@@ -42,7 +42,7 @@
                 <td>
                     <mat-form-field>
                         <mat-select placeholder="Country" [(ngModel)]="selectedCountry" formControlName="country">
-                            <mat-option *ngFor="let countries of user_country" [value]="countries.country_id">
+                            <mat-option *ngFor="let countries of user_country" [value]="countries.country_name">
                                 {{countries.country_name}}
                             </mat-option>
                         </mat-select>

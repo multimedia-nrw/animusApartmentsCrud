@@ -8,18 +8,18 @@
                 <td><b>Email</b></td>
                 <td><b> Action</b></td>
             </tr>
-            <tr *ngFor="let apartment_detail of global_var.role; let i=index">
+            <tr *ngFor="let apartment_detail of global_var.apartment_list; let i=index">
                 <td> {{apartment_detail.move_in_date}}</td>
                 <td>
-                    {{apartment_detail.street}}{{apartment_detail.town}}{{apartment_detail.postal_code}}{{apartment_detail.country}}
+                    {{apartment_detail.street}} {{apartment_detail.town}} {{apartment_detail.postal_code}}, {{apartment_detail.country}}
                 </td>
                 <td>{{apartment_detail.contact_email_address}}</td>
                 <td>
                     <button mat-raised-button color="primary" class="edit_button"
-                            (click)="editApartment(apartment_detail.access_token)">Edit
+                            (click)="editApartment(apartment_detail.access_token)">Edit Apartment
                     </button>
                     <button mat-raised-button color="accent" (click)="deleteApartment(apartment_detail.access_token,i)">
-                        Delete
+                        Delete Apartment
                     </button>
                 </td>
             </tr>
@@ -30,4 +30,6 @@
             </tr>-->
         </table>
     </mat-list>
-</mat-card>
+
+<!-- <button mat-raised-button color="accent" (click)="openDialog()">Pick one</button>
+ --></mat-card>

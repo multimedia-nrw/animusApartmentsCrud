@@ -6,8 +6,9 @@ import {Http} from '@angular/http';
   providedIn: 'root'
 })
 export class GlobalVarService {
-role: any[] = [];
+apartment_list: any[] = [];
 status: any = 100;
+ok_status: boolean;
   constructor(private http: Http) {
   	// this.http.get('http://phpstack-115345-722748.cloudwaysapps.com/api/apartments').
 	  //  subscribe(function (data) {
