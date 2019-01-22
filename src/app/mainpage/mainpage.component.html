@@ -1,45 +1,10 @@
 <mat-card class="example-card main_card">
- <!--  <mat-card-header>
-    <mat-card-title class="inner_card">Welcome to Animus</mat-card-title>
-  </mat-card-header> -->
-  <mat-card-content>
-		<div class="example-button-row">
-		 <h1 class="inner_card">Welcome to Animus</h1>
-		  <button mat-raised-button color="primary" (click)="ViewUserList()">View</button>
-		  <button mat-raised-button color="accent" (click)="AddUserList()">Add</button>
-		 </div>
-  </mat-card-content>
+    <mat-card-content>
+        <div class="example-button-row">
+            <h1 class="inner_card">Welcome to Animus Apartment Crud App</h1>
+            <button mat-raised-button color="primary" (click)="ViewApartmentList()">View Apartments</button>
+            <button mat-raised-button color="accent" (click)="AddApartment()">Add Apartment</button>
+        </div>
+    </mat-card-content>
 </mat-card>
-
-<!-- <h1>
-  {{title}}
-</h1>
-<app-alerts></app-alerts> -->
-<!--
-loader for data submition
- <mat-card>
-
-  <section class="example-section">
-      <label class="example-margin">Mode:</label>
-      <mat-radio-group [(ngModel)]="mode">
-        <mat-radio-button class="example-margin" value="determinate">
-          Determinate
-        </mat-radio-button>
-        <mat-radio-button class="example-margin" value="indeterminate">
-          Indeterminate
-        </mat-radio-button>
-      </mat-radio-group>
-    </section>
-
-  <mat-card-content>
-    <h2 class="example-h2">Result</h2>
-
-    <mat-progress-spinner
-        class="example-margin"
-        [color]="color"
-        [mode]="mode"
-        [value]="value">
-    </mat-progress-spinner>
-  </mat-card-content>
-</mat-card> -->
 <router-outlet></router-outlet>

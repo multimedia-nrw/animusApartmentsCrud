@@ -1,52 +1,67 @@
 <mat-card class="example-card main_card">
-<mat-card-title class="inner_card">Animus</mat-card-title>
-<form class="form-horizontal" [formGroup]="form">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-     <td>
-      <mat-form-field class="date_align">
-        <input matInput [matDatepicker]="picker" formControlName = "move_in_date" placeholder="Move in Date" [(ngModel)]="moving_date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-      </mat-form-field>
-    </td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Property Detail" [(ngModel)]="apartment_id" formControlName = "property_id">
-    </mat-form-field></td>
-  </tr>
+    <mat-card-title class="inner_card">Animus</mat-card-title>
+    <form class="form-horizontal" [formGroup]="form">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="date_align">
+                        <input matInput [matDatepicker]="picker" formControlName="move_in_date"
+                               placeholder="Move in Date" [(ngModel)]="moving_date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Property ID" [(ngModel)]="apartment_id"
+                               formControlName="property_id">
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Street" [(ngModel)]="apartment_street" formControlName = "street">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Town" [(ngModel)]="apartment_town" formControlName = "town">
-    </mat-form-field></td>
-  </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Street" [(ngModel)]="apartment_street" formControlName="street">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Town" [(ngModel)]="apartment_town" formControlName="town">
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput #postalCode maxlength="5" [(ngModel)]="apartment_zip" formControlName = "postal_code" placeholder="Postal Code" value="94043">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
-    <td>
-     <mat-form-field>
-      <mat-select placeholder="Country" [(ngModel)]="apartment_country" formControlName = "country">
-        <mat-option *ngFor="let countries of user_country" [value]="countries.country_name">
-          {{countries.country_name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field></td>
-  </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput #postalCode maxlength="8" [(ngModel)]="apartment_zip"
+                               formControlName="postal_code" placeholder="Postal Code" value="94043">
+                        <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select placeholder="Country" [(ngModel)]="apartment_country" formControlName="country">
+                            <mat-option *ngFor="let countries of user_country" [value]="countries.country_name">
+                                {{countries.country_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-  <tr>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Contact Email" [(ngModel)]="apartment_email" formControlName = "email">
-    </mat-form-field>
-  </tr>
-</table>
-<button type="submit" mat-raised-button color="accent" class="submit_button" (click)="editApartment()">Submit Data</button>
-<button mat-raised-button type="reset" color="primary">Reset Data</button>
-</form></mat-card>
+            <tr>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Contact Email" [(ngModel)]="apartment_email" formControlName="email">
+                </mat-form-field>
+            </tr>
+        </table>
+        <button type="submit" mat-raised-button color="accent" class="submit_button" (click)="editApartment()">Submit
+            Data
+        </button>
+        <button mat-raised-button type="reset" color="primary">Reset Data</button>
+    </form>
+</mat-card>
 
   
