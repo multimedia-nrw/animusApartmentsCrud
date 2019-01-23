@@ -35,7 +35,6 @@ Version 1 of the API is limited to the essentials of the requirements as per the
 ## Note: All the other Urls except that of Main Page, will not be directly accessible via links. They can only be accessed via navigation from the main page.
 
 ## Limitations:
-- Alerts not shown while adding, editing or delete the apartment record.
 - Pagination is not implemented, even though the component is added in the codebase.
 
 ## Things that can be improved:
