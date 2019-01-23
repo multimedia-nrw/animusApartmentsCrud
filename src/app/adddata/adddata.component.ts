@@ -24,12 +24,12 @@ export interface DialogData {
 })
 export class AdddataComponent implements OnInit {
     form: FormGroup;
-
+    isClickedOnce: boolean;
     startDate = new Date(2019, 1, 20);
     selectedCountry: string;
     user_country: Country[] = [
-        {country_id: '1', country_name: 'Germany'},
-        {country_id: '2', country_name: 'America'},
+        {country_id: '1', country_name: 'Deutschland'},
+        {country_id: '2', country_name: 'USA'},
         {country_id: '3', country_name: 'UK'}
     ];
 
@@ -37,7 +37,7 @@ export class AdddataComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('this.global_var.status', this.global_var.status)
+        this.isClickedOnce = false;
         this.form = this.formBuilder.group({
             email: [null, [Validators.required, Validators.email]],
             street: [null, Validators.required],
@@ -50,6 +50,7 @@ export class AdddataComponent implements OnInit {
     }
 
     onSubmit() {
+        this.isClickedOnce = true;
         var apartment_data = {
             street: this.form.value.street,
             contact_email_address: this.form.value.email,
@@ -60,16 +61,13 @@ export class AdddataComponent implements OnInit {
             country: this.form.value.country,
         }
        this.apartmentService.addApartment(apartment_data).then(data => {
-            console.log('addApartment data.data', data)
             var submit_status = JSON.parse(data['_body']);
-            console.log('submit status', submit_status)
             if (submit_status.status == 200) {
             	const dialogRef = this.dialog.open(AddApartmentDialogBox, {
 						width: '250px',
-						data: {operation: 'Added', msg: 'Apartment Added Successfully'}
+						data: {operation: 'Hinzugefügt', msg: 'Wohnung erfolgreich hinzugefügt'}
 					});
 					dialogRef.afterClosed().subscribe(result => {
-						console.log('The dialog was closed');
 					});
                 this.router.navigate(['/apartment/list']);
             }

@@ -29,10 +29,10 @@ export class EditApartmentComponent implements OnInit {
     apartment_email: any;
     apartment_id: any;
     startDate: any;
-
+    isClickedOnce: boolean;
     user_country: Country[] = [
-        {country_id: '1', country_name: 'Germany'},
-        {country_id: '2', country_name: 'America'},
+        {country_id: '1', country_name: 'Deutschland'},
+        {country_id: '2', country_name: 'USA'},
         {country_id: '3', country_name: 'UK'}
     ];
 
@@ -48,13 +48,12 @@ export class EditApartmentComponent implements OnInit {
             this.apartment_zip = result_data[0]['postal_code'];
             this.apartment_email = result_data[0]['contact_email_address'];
             this.apartment_id = result_data[0]['property_id'];
-            console.log('result_data', result_data)
-            console.log('this.apartment_country', this.apartment_country)
         });
 
     }
 
     ngOnInit() {
+        this.isClickedOnce = false;
         this.form = this.formBuilder.group({
             email: [null, [Validators.required, Validators.email]],
             street: [null, Validators.required],
@@ -68,6 +67,7 @@ export class EditApartmentComponent implements OnInit {
     }
 
     editApartment() {
+        this.isClickedOnce = true;
         var edit_apartment_data = {
             street: this.form.value.street,
             contact_email_address: this.form.value.email,
@@ -80,16 +80,13 @@ export class EditApartmentComponent implements OnInit {
         }
 
         this.apartmentService.updateApartment(edit_apartment_data).then(data => {
-            console.log('addApartment data.data', data)
             var edit_apartment_status = JSON.parse(data['_body']);
-            console.log('edit_apartment_status status', edit_apartment_status)
             if (edit_apartment_status.status == 200) {
             	const dialogRef = this.dialog.open(EditApartmentDialogBox, {
 						width: '250px',
-						data: {operation: 'Updated', msg: 'Apartment Updated Successfully'}
+						data: {operation: 'Aktualisierte', msg: 'Apartment erfolgreich aktualisiert'}
 					});
 					dialogRef.afterClosed().subscribe(result => {
-						console.log('The dialog was closed');
 					});
                 this.router.navigate(['/apartment/list']);
             }

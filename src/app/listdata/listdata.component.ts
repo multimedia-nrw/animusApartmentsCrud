@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit, Inject, ViewChild} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {Http} from '@angular/http';
 import {ApartmentServiceService} from '../apartment-service.service';
@@ -7,11 +7,19 @@ import {GlobalVarService} from '../global-var.service';
 import {PageEvent} from '@angular/material';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 export interface DialogData {
 	operation: string;
 	msg: string;
 };
+
+export interface PeriodicElement {
+	move_in_date: any;
+	address: any;
+	contact_email_address: any;
+	action: any;
+}
 
 @Component({
 	selector: 'app-listdata',
@@ -20,10 +28,14 @@ export interface DialogData {
 })
 
 export class ListdataComponent implements OnInit {
-	animal: string = "dfgdg";
-	name: string="dgdgzxc";
+	displayedColumns: string[] = ['move_in_date', 'address', 'contact_email_address', 'action'];
+	dataSource = new MatTableDataSource;
+
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+
 	apartment_list: any = [];
 	apartment_detail: any = [];
+	data_source_table: any =[];
 	length: any = 100;
 	pageSize: any = 10;
 	pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -33,46 +45,27 @@ export class ListdataComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log('global_var', this.global_var.apartment_list)
 		this.apartmentService.getApartmentList().then(data => {
 			this.apartment_detail = JSON.parse(data['_body']);
 			this.global_var.apartment_list = this.apartment_detail.data;
-			console.log('data.data', this.global_var.apartment_list)
-			console.log('this.apartment_detail', this.apartment_detail)
+			this.dataSource = new MatTableDataSource(this.global_var.apartment_list);
+			this.dataSource.paginator = this.paginator;
+			// for(let apartment of this.global_var.apartment_list){
+			// 	this.data_source_table.push({move_in_date: apartment.move_in_date, street: apartment.street});
+			// }
 		});
-	}
-
-	// openDialog(): void {
-	// 	const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-	// 		width: '250px',
-	// 		data: {name: this.name, animal: this.animal}
-
-	// 	});
-	// 	dialogRef.afterClosed().subscribe(result => {
-	// 		console.log('The dialog was closed');
-	// 		this.animal = result;
-	// 	});
-	// }
-
-
-
-	setPageSizeOptions(setPageSizeOptionsInput: string) {
-		this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
 	}
 
 	deleteApartment(access_token, index) {
 		this.apartmentService.deleteApartment(access_token).then(data => {
 			var result_data = JSON.parse(data['_body']);
-			console.log('result_data', result_data)
 			if (result_data.status == 200) {
-				console.log("Index ", index);
 				if (index > -1) {
 					const dialogRef = this.dialog.open(DeleteApartmentDialogBox, {
 						width: '250px',
-						data: {operation: 'Deleted', msg: 'This Apartment is Deleted Successfully'}
+						data: {operation: 'Gelöscht', msg: 'Diese Wohnung wurde erfolgreich gelöscht'}
 					});
 					dialogRef.afterClosed().subscribe(result => {
-						console.log('The dialog was closed');
 					});
 					this.global_var.apartment_list.splice(index, 1);
 				}

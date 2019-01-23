@@ -1,35 +1,76 @@
 <mat-card class="main_card">
-    <mat-card-title class="inner_card">Apartments List</mat-card-title>
-    <mat-list>
-        <table class="example-full-width" cellspacing="0">
-            <tr class="inner_row">
-                <td><b> Move-In Date</b></td>
-                <td><b>Address </b></td>
-                <td><b>Email</b></td>
-                <td><b> Action</b></td>
-            </tr>
-            <tr *ngFor="let apartment_detail of global_var.apartment_list; let i=index">
-                <td> {{apartment_detail.move_in_date}}</td>
-                <td>
-                    {{apartment_detail.street}} {{apartment_detail.town}} {{apartment_detail.postal_code}}, {{apartment_detail.country}}
-                </td>
-                <td>{{apartment_detail.contact_email_address}}</td>
-                <td>
-                    <button mat-raised-button color="primary" class="edit_button"
-                            (click)="editApartment(apartment_detail.access_token)">Edit Apartment
-                    </button>
-                    <button mat-raised-button color="accent" (click)="deleteApartment(apartment_detail.access_token,i)">
-                        Delete Apartment
-                    </button>
-                </td>
-            </tr>
-            <!--<tr>
-                <mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="pageSizeOptions"
-                               (page)="pageEvent = $event">
-                </mat-paginator>
-            </tr>-->
-        </table>
-    </mat-list>
+	<mat-card-title class="inner_card">Liste der Apartments
+	</mat-card-title>
+	<mat-list>
 
-<!-- <button mat-raised-button color="accent" (click)="openDialog()">Pick one</button>
- --></mat-card>
+<div class="mat-elevation-z8">
+	<table mat-table [dataSource]="dataSource">
+
+		<!-- Position Column -->
+		<ng-container matColumnDef="move_in_date">
+			<th mat-header-cell *matHeaderCellDef class="inner_row"> Einzugs Datum </th>
+			<td mat-cell *matCellDef="let element"> {{element.move_in_date}} </td>
+		</ng-container>
+
+		<!-- Name Column -->
+		<ng-container matColumnDef="address">
+			<th mat-header-cell *matHeaderCellDef class="inner_row"> Adresse </th>
+			<td mat-cell *matCellDef="let element"> {{element.street}} {{element.town}} {{element.postal_code}}, {{element.country}} </td>
+		</ng-container>
+
+		<!-- Weight Column -->
+		<ng-container matColumnDef="contact_email_address">
+			<th mat-header-cell *matHeaderCellDef class="inner_row"> Kontakt Email </th>
+			<td mat-cell *matCellDef="let element"> {{element.contact_email_address}} </td>
+		</ng-container>
+
+		<!-- Symbol Column -->
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef class="inner_row"> Aktion </th>
+			<td mat-cell *matCellDef="let element;let i=index"> 
+				<button mat-raised-button color="primary" class="edit_button"
+					(click)="editApartment(element.access_token)">Eintrag Bearbeiten
+				</button>
+				<button mat-raised-button color="accent" (click)="deleteApartment(element.access_token,i)">
+					Eintag Löschen
+				</button> </td>
+		</ng-container>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+	<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+	<!-- 	<table class="example-full-width" cellspacing="0">
+			<tr class="inner_row">
+				<td><b>Einzugs Datum</b></td>
+				<td><b>Adresse </b></td>
+				<td><b>Kontakt Email</b></td>
+				<td><b> Aktion</b></td>
+			</tr>
+			<tr *ngFor="let apartment_detail of global_var.apartment_list; let i=index">
+				<td> {{apartment_detail.move_in_date}}</td>
+				<td>
+					{{apartment_detail.street}} {{apartment_detail.town}} {{apartment_detail.postal_code}}, {{apartment_detail.country}}
+				</td>
+				<td>{{apartment_detail.contact_email_address}}</td>
+				<td>
+					<button mat-raised-button color="primary" class="edit_button"
+					(click)="editApartment(apartment_detail.access_token)">Eintrag Bearbeiten
+				</button>
+				<button mat-raised-button color="accent" (click)="deleteApartment(apartment_detail.access_token,i)">
+					Eintag Löschen
+				</button>
+			</td>
+		</tr>
+	</table> -->
+</mat-list>
+</mat-card>
+
+
+
+
+
+
+

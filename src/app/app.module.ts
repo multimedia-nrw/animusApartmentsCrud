@@ -26,6 +26,7 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ApartmentServiceService} from './apartment-service.service';
 import {GlobalVarService} from './global-var.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {EditApartmentComponent,EditApartmentDialogBox} from './edit-apartment/edit-apartment.component';
 
 const appRoutes: Routes = [
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
     entryComponents: [DeleteApartmentDialogBox,AddApartmentDialogBox,EditApartmentDialogBox],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, {useHash: true}),
         BrowserAnimationsModule,
         HttpModule,
         MatNativeDateModule,
@@ -56,7 +57,7 @@ const appRoutes: Routes = [
         FormsModule,
         ReactiveFormsModule,
     ],
-    providers: [ApartmentServiceService, MatDatepickerModule, GlobalVarService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},ApartmentServiceService, MatDatepickerModule, GlobalVarService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

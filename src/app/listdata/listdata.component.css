@@ -1,21 +1,22 @@
 mat-grid-tile {
-  background: lightblue;
+	background: lightblue;
 }
 .main_card{
 	margin-top: 2em; */
-    /* margin: 5em; */
-    text-align: center;
-    /* margin-left: 33em; */
+	/* margin: 5em; */
+	text-align: center;
+	/* margin-left: 33em; */
 /*    height: 20em;
 */    text-align: center;
-    border-top: 2px solid #ff4081;
-    border-bottom: 2px solid #ff4081;
-    background-color: white;
-    /* max-width: 80em; */
+border-top: 2px solid #ff4081;
+border-bottom: 2px solid #ff4081;
+background-color: white;
+/* max-width: 80em; */
 }
+
 .inner_row{
-	    color: red!important;
-    font-size: 1.4em!important;
+	color: red;
+	font-size: 1.4em;
 }
 .edit_button{
 	margin-right: 12px;
@@ -24,67 +25,67 @@ mat-grid-tile {
 
 .inner_card{
 	text-align: center;
-    margin-bottom: 1em;
-    color: #3f51b5;
-    border-bottom: 2px solid black;
+	margin-bottom: 1em;
+	color: #3f51b5;
+	border-bottom: 2px solid black;
 }
 /*.list_border{
 	border-bottom: 2px solid;
-}*/
-.example-container {
-  position: relative;
-}
+	}*/
+	.example-container {
+		position: relative;
+	}
 
-.example-table-container {
-  position: relative;
-  max-height: 400px;
-  overflow: auto;
-}
+	.example-table-container {
+		position: relative;
+		max-height: 400px;
+		overflow: auto;
+	}
 
-table {
-  width: 100%;
-}
+	table {
+		width: 100%;
+	}
 
-.example-loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+	.example-loading-shade {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 56px;
+		right: 0;
+		background: rgba(0, 0, 0, 0.15);
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-.example-rate-limit-reached {
-  color: #980000;
-  max-width: 360px;
-  text-align: center;
-}
+	.example-rate-limit-reached {
+		color: #980000;
+		max-width: 360px;
+		text-align: center;
+	}
 
-/* Column Widths */
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
-}
+	/* Column Widths */
+	.mat-column-number,
+	.mat-column-state {
+		max-width: 64px;
+	}
 
-.mat-column-created {
-  max-width: 124px;
-}
+	.mat-column-created {
+		max-width: 124px;
+	}
 
-.example-h2 {
-  margin: 10px;
-}
+	.example-h2 {
+		margin: 10px;
+	}
 
-.example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
-}
+	.example-section {
+		display: flex;
+		align-content: center;
+		align-items: center;
+		height: 60px;
+	}
 
-.example-margin {
-  margin: 0 10px;
-}
+	.example-margin {
+		margin: 0 10px;
+	}

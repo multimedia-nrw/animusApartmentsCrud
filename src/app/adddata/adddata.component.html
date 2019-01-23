@@ -1,19 +1,20 @@
 <mat-card class="example-card main_card">
-    <mat-card-title class="inner_card">Add Apartment</mat-card-title>
+    <mat-card-title class="inner_card">Wohnung hinzufügen
+</mat-card-title>
     <form class="form-horizontal" [formGroup]="form">
         <table class="example-full-width" cellspacing="0">
             <tr>
                 <td>
                     <mat-form-field class="date_align">
                         <input matInput [matDatepicker]="picker" formControlName="move_in_date"
-                               placeholder="Move in Date">
+                               placeholder="Einzugs Datum">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Property ID" formControlName="property_id">
+                        <input matInput placeholder="Eigentums-ID" formControlName="property_id">
                     </mat-form-field>
                 </td>
             </tr>
@@ -21,12 +22,12 @@
             <tr>
                 <td>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Street" formControlName="street">
+                        <input matInput placeholder="Straße" formControlName="street">
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Town" formControlName="town">
+                        <input matInput placeholder="Stadt" formControlName="town">
                     </mat-form-field>
                 </td>
             </tr>
@@ -35,13 +36,13 @@
                 <td>
                     <mat-form-field class="example-full-width">
                         <input matInput #postalCode maxlength="8" formControlName="postal_code"
-                               placeholder="Postal Code" value="94043">
+                               placeholder="Postleitzahl" value="94043">
                         <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <mat-select placeholder="Country" [(ngModel)]="selectedCountry" formControlName="country">
+                        <mat-select placeholder="Land" [(ngModel)]="selectedCountry" formControlName="country">
                             <mat-option *ngFor="let countries of user_country" [value]="countries.country_name">
                                 {{countries.country_name}}
                             </mat-option>
@@ -52,12 +53,13 @@
 
             <tr>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Contact Email" formControlName="email">
+                    <input matInput placeholder="Kontakt Email" formControlName="email">
                 </mat-form-field>
             </tr>
         </table>
-        <button type="submit" mat-raised-button color="accent" class="submit_button" (click)="onSubmit()">Submit Data
+        <button type="submit" mat-raised-button color="accent" class="submit_button" [disabled]="!form.valid || isClickedOnce" (click)="onSubmit()">Daten senden
         </button>
-        <button mat-raised-button type="reset" color="primary">Reset Data</button>
+        <button mat-raised-button type="reset" color="primary">Daten zurücksetzen
+</button>
     </form>
 </mat-card>
